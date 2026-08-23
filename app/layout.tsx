@@ -3,6 +3,7 @@ import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CallButton from "@/components/CallButton";
 import { buildLocalBusinessSchema } from "@/lib/schema";
 
 const fraunces = Fraunces({
@@ -19,11 +20,6 @@ const manrope = Manrope({
   display: "swap",
 });
 
-// ---------------------------------------------------------------
-// METADATA GLOBALE (par défaut). Chaque page peut la surcharger
-// via son propre `export const metadata` — voir app/page.tsx et
-// app/nettoyage-cergy/page.tsx pour des exemples ciblés SEO local.
-// ---------------------------------------------------------------
 export const metadata: Metadata = {
   metadataBase: new URL("https://nettoyage-cergy.fr"),
   title: {
@@ -53,7 +49,7 @@ export const metadata: Metadata = {
       "Nettoyage professionnel pour entreprises, copropriétés et particuliers à Cergy et dans tout le Val-d'Oise. Devis gratuit, intervention rapide.",
     images: [
       {
-        url: "/og-image.jpg", // TODO: voir stratégie d'images plus bas (1200x630)
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Équipe Cergy Propreté intervenant à Cergy, Val-d'Oise",
@@ -66,7 +62,6 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   verification: {
-    // TODO: coller ton code de vérification Google Search Console
     google: "TODO-google-site-verification-code",
   },
 };
@@ -83,7 +78,6 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${manrope.variable} bg-ivory-50 font-sans text-slate-700 antialiased`}
       >
-        {/* Données structurées globales CleaningService (LocalBusiness) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -91,6 +85,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <CallButton />
       </body>
     </html>
   );

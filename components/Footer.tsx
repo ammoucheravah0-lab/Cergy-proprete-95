@@ -116,10 +116,11 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 font-display text-lg font-semibold text-white">Liens utiles</h3>
           <ul className="space-y-2 text-sm text-slate-400">
-            <li><Link href="/nettoyage-cergy" className="hover:text-[#C9A227] transition-colors">Nettoyage à Cergy</Link></li>
+            <li><Link href="/#zones" className="hover:text-[#C9A227] transition-colors">Zones d'intervention</Link></li>
             <li><Link href="/#services" className="hover:text-[#C9A227] transition-colors">Nos services</Link></li>
             <li><Link href="/#devis" className="hover:text-[#C9A227] transition-colors">Demander un devis</Link></li>
             <li><Link href="/mentions-legales" className="hover:text-[#C9A227] transition-colors">Mentions légales</Link></li>
+            <li><Link href="/politique-de-confidentialite" className="hover:text-[#C9A227] transition-colors">Politique de confidentialité</Link></li>
             {/* TODO: créer /mentions-legales et /politique-de-confidentialite (obligatoire RGPD) */}
           </ul>
         </div>
