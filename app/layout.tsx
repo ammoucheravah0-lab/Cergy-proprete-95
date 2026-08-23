@@ -25,10 +25,10 @@ const manrope = Manrope({
 // app/nettoyage-cergy/page.tsx pour des exemples ciblés SEO local.
 // ---------------------------------------------------------------
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.cergy-proprete95.fr"), // TODO: nom de domaine définitif
+  metadataBase: new URL("https://nettoyage-cergy.fr"),
   title: {
-    default: "Cergy Propreté 95 | Entreprise de nettoyage à Cergy & Val-d'Oise",
-    template: "%s | Cergy Propreté 95",
+    default: "Cergy Propreté | Entreprise de nettoyage à Cergy & Val-d'Oise",
+    template: "%s | Cergy Propreté",
   },
   description:
     "Entreprise de nettoyage professionnelle basée à Cergy, intervenant dans tout le Val-d'Oise (95) : bureaux, copropriétés, fin de chantier, particuliers. Devis gratuit sous 24h.",
@@ -46,9 +46,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://www.cergy-proprete95.fr",
-    siteName: "Cergy Propreté 95",
-    title: "Cergy Propreté 95 | Entreprise de nettoyage à Cergy & Val-d'Oise",
+    url: "https://nettoyage-cergy.fr",
+    siteName: "Cergy Propreté",
+    title: "Cergy Propreté | Entreprise de nettoyage à Cergy & Val-d'Oise",
     description:
       "Nettoyage professionnel pour entreprises, copropriétés et particuliers à Cergy et dans tout le Val-d'Oise. Devis gratuit, intervention rapide.",
     images: [
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg", // TODO: voir stratégie d'images plus bas (1200x630)
         width: 1200,
         height: 630,
-        alt: "Équipe Cergy Propreté 95 intervenant à Cergy, Val-d'Oise",
+        alt: "Équipe Cergy Propreté intervenant à Cergy, Val-d'Oise",
       },
     ],
   },

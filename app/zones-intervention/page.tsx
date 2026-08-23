@@ -44,8 +44,8 @@ const VILLES = [
 
 export default function ZonesInterventionPage() {
   const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: "Accueil", url: "https://www.cergy-proprete95.fr" },
-    { name: "Zones d'intervention", url: "https://www.cergy-proprete95.fr/zones-intervention" },
+    { name: "Accueil", url: "https://nettoyage-cergy.fr" },
+    { name: "Zones d'intervention", url: "https://nettoyage-cergy.fr/zones-intervention" },
   ]);
 
   return (

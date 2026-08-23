@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.cergy-proprete95.fr/sitemap.xml", // TODO: nom de domaine définitif
+    sitemap: "https://nettoyage-cergy.fr/sitemap.xml",
   };
 }

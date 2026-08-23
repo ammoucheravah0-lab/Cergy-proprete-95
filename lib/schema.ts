@@ -10,8 +10,8 @@
  */
 
 export const NAP = {
-  name: "Cergy Propreté 95",
-  legalName: "Cergy Propreté 95 SARL", // TODO: raison sociale exacte
+  name: "Cergy Propreté",
+  legalName: "Cergy Propreté SARL", // TODO: raison sociale exacte
   telephone: "+33-1-00-00-00-00", // TODO: numéro de téléphone réel
   email: "Cergyproprete@gmail.com", // TODO: adresse e-mail réelle
   streetAddress: "12 Place des Trois Gares", // TODO: adresse exacte du gérant à Cergy
@@ -29,11 +29,11 @@ export function buildLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "CleaningService",
-    "@id": "https://www.cergy-proprete95.fr/#organization",
+    "@id": "https://nettoyage-cergy.fr/#organization",
     name: NAP.name,
-    image: "https://www.cergy-proprete95.fr/og-image.jpg", // TODO: image réelle 1200x630
-    logo: "https://www.cergy-proprete95.fr/logo.svg",
-    url: "https://www.cergy-proprete95.fr",
+    image: "https://nettoyage-cergy.fr/og-image.jpg", // TODO: image réelle 1200x630
+    logo: "https://nettoyage-cergy.fr/logo.svg",
+    url: "https://nettoyage-cergy.fr",
     telephone: NAP.telephone,
     email: NAP.email,
     priceRange: NAP.priceRange,

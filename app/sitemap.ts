@@ -14,7 +14,7 @@ const VILLE_SLUGS = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://www.cergy-proprete95.fr"; // TODO: nom de domaine définitif
+  const base = "https://nettoyage-cergy.fr";
 
   return [
     { url: `${base}/`, changeFrequency: "weekly", priority: 1 },
