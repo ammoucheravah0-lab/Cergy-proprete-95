@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-display text-navy-950;
+  }
+
+  @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+  a {
+    @apply transition-colors duration-200;
+  }
+  /* Accessibilité : focus visible clair sur tous les éléments interactifs */
+  :focus-visible {
+    outline: 2px solid theme("colors.brass.500");
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Trait de "sweep" doré — signature visuelle réutilisée en séparateur de section */
+  .signature-sweep {
+    @apply relative h-[3px] w-16 rounded-full bg-brass-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-navy-950 px-6 py-3.5 font-sans font-semibold text-ivory-50 shadow-prestige transition-transform duration-200 hover:-translate-y-0.5 hover:bg-navy-800;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-navy-950 px-6 py-3.5 font-sans font-semibold text-navy-950 transition-colors duration-200 hover:bg-navy-950 hover:text-ivory-50;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-block font-sans text-sm font-semibold uppercase tracking-[0.2em] text-brass-500;
+  }
+}
