@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Nos services", href: "/#services" },
-  { label: "Nettoyage à Cergy", href: "/nettoyage-cergy" },
+  { label: "Nettoyage à Cergy", href: "/nettoyage/cergy" },
   { label: "Zones d'intervention (95)", href: "/zones-intervention" },
   { label: "Avis clients", href: "/#avis" },
   { label: "Contact", href: "/#devis" },

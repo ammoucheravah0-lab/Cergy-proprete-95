@@ -19,7 +19,7 @@ export default function Hero() {
           </span>
 
           <h1 className="mt-6 max-w-xl font-display text-4xl font-light tracking-tight text-ivory-50 sm:text-5xl lg:text-6xl">
-            Le nettoyage professionnel,{" "}
+            Entreprise de nettoyage professionnel à Cergy (95),{" "}
             <span className="italic text-brass-400">pensé pour l&apos;excellence.</span>
           </h1>
 
