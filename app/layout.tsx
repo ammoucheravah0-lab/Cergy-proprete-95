@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CallButton from "@/components/CallButton";
 import { buildLocalBusinessSchema } from "@/lib/schema";
+import { Analytics } from "@vercel/analytics/next";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -86,6 +87,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <CallButton />
+        <Analytics />
       </body>
     </html>
   );
