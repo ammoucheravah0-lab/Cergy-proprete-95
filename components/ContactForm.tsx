@@ -6,10 +6,12 @@ type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [state, setState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("submitting");
+    setErrorMessage("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -29,10 +31,16 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Échec de l'envoi");
+      const result = (await res.json().catch(() => null)) as { error?: string } | null;
+      if (!res.ok) {
+        throw new Error(result?.error || "Échec de l'envoi");
+      }
+
       setState("success");
       form.reset();
-    } catch (err) {
+    } catch (error) {
+      console.error("Erreur lors de l'envoi du devis :", error);
+      setErrorMessage(error instanceof Error ? error.message : "Échec de l'envoi");
       setState("error");
     }
   }
@@ -150,8 +158,7 @@ export default function ContactForm() {
       )}
       {state === "error" && (
         <p role="alert" className="text-sm font-medium text-red-700">
-          Une erreur est survenue. Merci de nous appeler directement au +33 7 52 08 11 44 ou de nous contacter par mail <strong>Cergyproprete@gmail.com</strong>.
-          {/* TODO: numéro réel */}
+          {errorMessage || "Une erreur est survenue lors de l'envoi."} Merci de nous appeler directement au +33 7 52 08 11 44 ou de nous contacter par mail <strong>Cergyproprete@gmail.com</strong>.
         </p>
       )}
     </form>
