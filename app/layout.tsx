@@ -23,11 +23,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://nettoyage-cergy.fr"),
   title: {
-    default: "Cergy Propreté | Entreprise de nettoyage à Cergy & Val-d'Oise",
+    default: "Cergy Propreté - Entreprise de Nettoyage à Cergy et dans le Val-d'Oise (95)",
     template: "%s | Cergy Propreté",
   },
   description:
-    "Entreprise de nettoyage professionnelle basée à Cergy, intervenant dans tout le Val-d'Oise (95) : bureaux, copropriétés, fin de chantier, particuliers. Devis gratuit sous 24h.",
+    "Cergy Propreté, entreprise de nettoyage professionnelle basée à Cergy, intervient dans tout le Val-d'Oise (95) : bureaux, restaurants, copropriétés, fin de chantier, particuliers. Devis gratuit sous 24h.",
   keywords: [
     "entreprise de nettoyage Cergy",
     "nettoyage Val-d'Oise",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://nettoyage-cergy.fr",
     siteName: "Cergy Propreté",
-    title: "Cergy Propreté | Entreprise de nettoyage à Cergy & Val-d'Oise",
+    title: "Cergy Propreté - Entreprise de Nettoyage à Cergy et dans le Val-d'Oise (95)",
     description:
       "Nettoyage professionnel pour entreprises, copropriétés et particuliers à Cergy et dans tout le Val-d'Oise. Devis gratuit, intervention rapide.",
     images: [

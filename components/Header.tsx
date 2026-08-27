@@ -16,16 +16,24 @@ export default function Header() {
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-brass-500/40 to-transparent" />
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
-        {/* Logo */}
-        <Link href="/" aria-label="Cergy Propreté 95 - Retour à l'accueil" className="flex items-center transition-opacity hover:opacity-90">
+        {/* Logo (pictogramme) + nom de marque en texte HTML (meilleur pour le SEO et l'accessibilité) */}
+        <Link href="/" aria-label="Cergy Propreté - Retour à l'accueil" className="flex items-center gap-3 transition-opacity hover:opacity-90">
           <Image
             src="/logo.svg"
-            alt="Logo Cergy Propreté 95, entreprise de nettoyage à Cergy"
-            width={200}
-            height={56}
+            alt="Pictogramme Cergy Propreté"
+            width={48}
+            height={52}
             priority
-            className="h-12 w-auto object-contain"
+            className="h-11 w-auto object-contain"
           />
+          <span className="flex flex-col leading-tight">
+            <span className="font-display text-lg font-bold tracking-tight text-ivory-50 sm:text-xl">
+              Cergy Propreté
+            </span>
+            <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-brass-400">
+              Cergy &amp; Val-d&apos;Oise
+            </span>
+          </span>
         </Link>
 
         {/* Navigation principale */}

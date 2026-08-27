@@ -54,9 +54,13 @@ export function buildLocalBusinessSchema() {
       { "@type": "City", name: "Cergy" },
       { "@type": "City", name: "Pontoise" },
       { "@type": "City", name: "Osny" },
-      { "@type": "City", name: "Vaureal" },
-      { "@type": "City", name: "Éragny" },
+      { "@type": "City", name: "Vauréal" },
+      { "@type": "City", name: "Éragny-sur-Oise" },
       { "@type": "City", name: "Saint-Ouen-l'Aumône" },
+      { "@type": "City", name: "Jouy-le-Moutier" },
+      { "@type": "City", name: "Courdimanche" },
+      { "@type": "City", name: "Neuville-sur-Oise" },
+      { "@type": "City", name: "Menucourt" },
       { "@type": "AdministrativeArea", name: "Val-d'Oise" },
     ],
     openingHoursSpecification: [
@@ -84,10 +88,11 @@ export function buildLocalBusinessSchema() {
       name: "Services de nettoyage",
       itemListElement: [
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage de bureaux" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage de restaurant" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage de copropriétés" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage fin de chantier" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage vitrerie" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Remise en état / ménage particuliers" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Nettoyage vitres" } },
       ],
     },
   };

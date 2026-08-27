@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Politique de Confidentialité",
+  description:
+    "Politique de confidentialité et protection des données personnelles (RGPD) de Cergy Propreté, entreprise de nettoyage à Cergy et dans le Val-d'Oise (95).",
+  alternates: { canonical: "/politique-de-confidentialite" },
+  robots: { index: true, follow: true },
+};
 
 export default function PolitiqueConfidentialite() {
   return (

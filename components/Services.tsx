@@ -8,6 +8,7 @@ const SERVICES = [
     image: "/images/AgentdeNettoyage_Cergy.jpg",
     alt: "Nettoyage professionnel de restaurant à Cergy et dans le Val-d'Oise",
     specialite: true, // Marqueur pour identifier la spécialité
+    href: "/nettoyage-restaurant-cergy",
   },
   {
     titre: "Commerces & Boutiques",
@@ -22,6 +23,7 @@ const SERVICES = [
       "Entretien régulier de vos locaux professionnels à Cergy et dans le Val-d'Oise : sols, sanitaires, espaces communs et vitrerie.",
     image: "/images/Nettoyage-de-bureaux-sur-Cergy.jpg",
     alt: "Nettoyage professionnel de bureaux à Cergy",
+    href: "/nettoyage-bureaux-cergy",
   },
   {
     titre: "Nettoyage de Copropriétés",
@@ -29,6 +31,7 @@ const SERVICES = [
       "Entretien des parties communes, halls d'immeuble et abords extérieurs pour les résidences et copropriétés du 95.",
     image: "/images/nettoyage-copropriete-immeuble-cergy-95.jpg",
     alt: "Nettoyage des parties communes d'une copropriété dans le Val-d'Oise",
+    href: "/nettoyage-coproprietes-cergy",
   },
   {
     titre: "Nettoyage Fin de Chantier",
@@ -36,6 +39,7 @@ const SERVICES = [
       "Remise en état complète après travaux : dépoussiérage, évacuation des résidus, nettoyage des sols et vitres avant livraison.",
     image: "/images/nettoyage-fin-de-chantier-bureau-cergy-95.jpg",
     alt: "Remise en état et nettoyage fin de chantier à Cergy",
+    href: "/nettoyage-fin-de-chantier-cergy",
   },
   {
     titre: "Nettoyage Vitrerie",
@@ -43,6 +47,7 @@ const SERVICES = [
       "Lavage de vitres et baies vitrées pour professionnels et particuliers, avec matériel adapté aux façades en hauteur.",
     image: "/images/nettoyage-vitres-bureau-cergy-95.jpg",
     alt: "Nettoyage professionnel de vitres à Cergy, Val-d'Oise",
+    href: "/nettoyage-vitrerie-cergy",
   },
   {
     titre: "Cabinets Médicaux & Cliniques",
@@ -79,9 +84,9 @@ export default function Services() {
           <span className="inline-block rounded-full border border-cergy-200 bg-cergy-100/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-slate-800 backdrop-blur-sm">
             Savoir-Faire & Excellence
           </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-            Nos Prestations de Propreté
-          </h2>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+            Nos prestations de nettoyage dans le Val-d'Oise (95)
+          </h1>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
             Des interventions haut de gamme adaptées aux exigences des professionnels et particuliers à Cergy et dans tout le Val-d&apos;Oise.
           </p>
@@ -115,7 +120,7 @@ export default function Services() {
             return (
               <a
                 key={service.titre}
-                href="/#devis"
+                href={service.href ?? "/#devis"}
                 className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-cergy-300 hover:shadow-xl"
               >
                 <div>
@@ -132,9 +137,9 @@ export default function Services() {
 
                   <div className="mt-5 px-1">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-xl font-semibold tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-cergy-700">
+                      <h2 className="text-xl font-semibold tracking-tight text-slate-900 transition-colors duration-200 group-hover:text-cergy-700">
                         {service.titre}
-                      </h3>
+                      </h2>
                       {/* Étoile dorée unique si c'est la spécialité */}
                       {service.specialite && (
                         <span className="flex items-center gap-1 text-xs font-semibold text-[#C9A227] bg-[#C9A227]/10 px-2.5 py-1 rounded-full border border-[#C9A227]/30">
@@ -149,7 +154,7 @@ export default function Services() {
                 </div>
 
                 <div className="mt-6 flex items-center justify-between border-t border-slate-100 px-1 pt-4 text-xs font-semibold text-slate-500 transition-colors group-hover:text-slate-900">
-                  <span>Accéder au formulaire de devis</span>
+                  <span>{service.href ? "Découvrir la prestation" : "Accéder au formulaire de devis"}</span>
                   <span className="text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </div>
               </a>

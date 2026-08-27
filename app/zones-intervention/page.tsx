@@ -2,45 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DevisSection from "@/components/DevisSection";
 import { buildBreadcrumbSchema } from "@/lib/schema";
+import { VILLES, VILLE_SLUGS } from "@/lib/local-seo";
 
 export const metadata: Metadata = {
-  title: "Nettoyage Val-d'Oise (95) | Zones d'intervention - Cergy Propreté 95",
+  title: "Nettoyage Val-d'Oise (95) | Zones d'intervention",
   description:
-    "Cergy Propreté 95 intervient dans tout le Val-d'Oise depuis Cergy : Pontoise, Osny, Vauréal, Éragny, Saint-Ouen-l'Aumône... Découvrez nos zones d'intervention.",
+    "Cergy Propreté intervient dans tout le Val-d'Oise depuis Cergy : Pontoise, Osny, Vauréal, Éragny, Saint-Ouen-l'Aumône, Jouy-le-Moutier... Découvrez nos 10 zones d'intervention.",
   alternates: { canonical: "/zones-intervention" },
 };
-
-const VILLES = [
-  {
-    nom: "Cergy",
-    texte:
-      "Notre base d'intervention historique : bureaux, copropriétés et particuliers du centre-ville, des Linandes et du quartier de l'Horloge.",
-  },
-  {
-    nom: "Pontoise",
-    texte:
-      "Nettoyage professionnel pour les commerces, bureaux et copropriétés de la préfecture du Val-d'Oise.",
-  },
-  {
-    nom: "Osny",
-    texte:
-      "Entretien régulier ou ponctuel pour les résidences et locaux professionnels d'Osny.",
-  },
-  {
-    nom: "Vauréal",
-    texte:
-      "Interventions pour particuliers et copropriétés dans les quartiers résidentiels de Vauréal.",
-  },
-  {
-    nom: "Éragny-sur-Oise",
-    texte: "Nettoyage de bureaux et de parties communes pour les copropriétés d'Éragny-sur-Oise.",
-  },
-  {
-    nom: "Saint-Ouen-l'Aumône",
-    texte:
-      "Prestations pour zones d'activité, commerces et copropriétés de Saint-Ouen-l'Aumône.",
-  },
-];
 
 export default function ZonesInterventionPage() {
   const breadcrumbSchema = buildBreadcrumbSchema([
@@ -63,34 +32,44 @@ export default function ZonesInterventionPage() {
       <section className="mx-auto max-w-4xl px-6 py-16 text-center">
         <span className="section-eyebrow">Val-d&apos;Oise (95)</span>
         <h1 className="text-4xl sm:text-5xl">
-          Nettoyage professionnel dans tout le Val-d&apos;Oise
+          Entreprise de nettoyage dans tout le <strong>Val-d&apos;Oise</strong>
         </h1>
         <p className="mt-6 leading-relaxed text-slate-600">
-          Basée à Cergy, Cergy Propreté 95 accompagne les entreprises,
-          copropriétés et particuliers de l&apos;ensemble de
-          l&apos;agglomération de Cergy-Pontoise et au-delà. Découvrez nos
-          principales zones d&apos;intervention ci-dessous.
+          Basée à <strong>Cergy</strong>, <strong>Cergy Propreté</strong> accompagne les entreprises,
+          copropriétés et particuliers de l&apos;ensemble de l&apos;agglomération de Cergy-Pontoise et
+          au-delà. Sélectionnez votre commune pour découvrir le détail de nos prestations près de chez
+          vous.
         </p>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <div className="grid gap-8 sm:grid-cols-2">
-          {VILLES.map((ville) => (
-            <article key={ville.nom} className="rounded-xl border border-cergy-100 bg-ivory-100 p-6">
-              {/* H2 par ville : renforce le maillage sémantique local */}
-              <h2 className="text-2xl">Nettoyage à {ville.nom}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{ville.texte}</p>
-              <Link href="/#devis" className="mt-4 inline-block text-sm font-semibold text-brass-500 hover:underline">
-                Demander un devis à {ville.nom} →
-              </Link>
-            </article>
-          ))}
+        <div className="grid gap-6 sm:grid-cols-2">
+          {VILLE_SLUGS.map((slug) => {
+            const ville = VILLES[slug];
+            return (
+              <article
+                key={slug}
+                className="group rounded-xl border border-cergy-100 bg-ivory-100 p-6 transition-shadow hover:shadow-md"
+              >
+                {/* H2 par ville : renforce le maillage sémantique local */}
+                <h2 className="text-2xl">
+                  <Link href={`/nettoyage/${slug}`} className="hover:text-brass-500 transition-colors">
+                    Nettoyage à {ville.nom}
+                  </Link>
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  Nous intervenons sur {ville.description}.
+                </p>
+                <Link
+                  href={`/nettoyage/${slug}`}
+                  className="mt-4 inline-block text-sm font-semibold text-brass-500 hover:underline"
+                >
+                  Voir nos prestations à {ville.nom} →
+                </Link>
+              </article>
+            );
+          })}
         </div>
-
-        {/* TODO (évolution SEO) : à terme, transformer chaque ville en page
-            dédiée /nettoyage-pontoise, /nettoyage-osny, etc. sur le modèle
-            de app/nettoyage-cergy/page.tsx pour maximiser le SEO local
-            longue traîne. Cette page généraliste sert de hub en attendant. */}
       </section>
 
       <DevisSection />

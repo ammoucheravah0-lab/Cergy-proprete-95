@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Mentions Légales",
+  description:
+    "Mentions légales de Cergy Propreté, entreprise de nettoyage basée à Cergy et intervenant dans tout le Val-d'Oise (95).",
+  alternates: { canonical: "/mentions-legales" },
+  robots: { index: true, follow: true },
+};
 
 export default function MentionsLegales() {
   return (

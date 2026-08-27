@@ -2,14 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 const VILLES_VAL_DOISE = [
-  "Cergy",
-  "Pontoise",
-  "Osny",
-  "Vauréal",
-  "Éragny-sur-Oise",
-  "Saint-Ouen-l'Aumône",
-  "Jouy-le-Moutier",
-  "Courdimanche",
+  { nom: "Cergy", slug: "cergy" },
+  { nom: "Pontoise", slug: "pontoise" },
+  { nom: "Osny", slug: "osny" },
+  { nom: "Vauréal", slug: "vaureal" },
+  { nom: "Éragny-sur-Oise", slug: "eragny-sur-oise" },
+  { nom: "Saint-Ouen-l'Aumône", slug: "saint-ouen-laumone" },
+  { nom: "Jouy-le-Moutier", slug: "jouy-le-moutier" },
+  { nom: "Courdimanche", slug: "courdimanche" },
 ];
 
 export default function Footer() {
@@ -20,17 +20,17 @@ export default function Footer() {
         {/* Colonne 1 : Présentation & Logos */}
         <div className="flex flex-col items-start">
           
-          {/* LOGO CERGY PROPRETÉ - Responsive & Dimensions SVG préservées */}
-          <div className="w-full">
-            <div className="relative h-20 w-64 shrink-0 overflow-hidden rounded-lg bg-slate-800 shadow-sm">
+          {/* LOGO CERGY PROPRETÉ - pictogramme + nom en texte HTML */}
+          <div className="flex w-full items-center gap-3">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-lg bg-slate-800 shadow-sm">
               <Image
                 src="/logo.svg"
-                alt="Logo Cergy Propreté"
+                alt="Pictogramme Cergy Propreté"
                 fill
-                className="object-contain p-1" // object-contain pour garder le SVG intact sans déformation
+                className="object-contain p-1.5"
               />
             </div>
-            <h3 className="mt-3 font-display text-xl font-bold text-white">
+            <h3 className="font-display text-xl font-bold text-white">
               Cergy Propreté
             </h3>
           </div>
@@ -101,7 +101,11 @@ export default function Footer() {
           <h3 className="mb-4 font-display text-lg font-semibold text-white">Zones d&apos;intervention</h3>
           <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm text-slate-400">
             {VILLES_VAL_DOISE.map((ville) => (
-              <li key={ville} className="hover:text-slate-200 transition-colors">{ville}</li>
+              <li key={ville.slug}>
+                <Link href={`/nettoyage/${ville.slug}`} className="hover:text-[#C9A227] transition-colors">
+                  Nettoyage à {ville.nom}
+                </Link>
+              </li>
             ))}
           </ul>
           <Link

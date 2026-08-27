@@ -3,85 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import DevisSection from "@/components/DevisSection";
-
-const VILLES = {
-    cergy: { nom: "Cergy", description: "le centre-ville, les parcs d'activités et les quartiers résidentiels" },
-    pontoise: { nom: "Pontoise", description: "le centre historique, l'Hôtel de Ville et les Louvrais" },
-    osny: { nom: "Osny", description: "l'Oseraie, le centre-ville et les quartiers résidentiels" },
-    vaureal: { nom: "Vauréal", description: "les Portes du Vexin, le village et les coteaux" },
-    "eragny-sur-oise": { nom: "Éragny-sur-Oise", description: "les falaises, le Plessis-Botbard et les bas pays" },
-    "saint-ouen-laumone": { nom: "Saint-Ouen-l'Aumône", description: "les parcs d'activités, l'Épluchette et le centre-ville" },
-    "jouy-le-moutier": { nom: "Jouy-le-Moutier", description: "les Brouillons, le vieux village et les coteaux" },
-    courdimanche: { nom: "Courdimanche", description: "le Bois d'Aulne, les Linandes et le Village" },
-    "neuville-sur-oise": { nom: "Neuville-sur-Oise", description: "le campus, les bords de l'Oise et le village" },
-    menucourt: { nom: "Menucourt", description: "le centre et les zones pavillonnaires environnantes" },
-} as const;
-
-const PRESTATIONS = [
-    {
-        titre: "Nettoyage de Restaurant",
-        texte: "Nettoyage sur-mesure et désinfection rigoureuse pour garantir le respect des normes sanitaires et offrir une expérience irréprochable à vos clients.",
-        details: [
-            "Pianos, plaques et feux vifs : récurage en profondeur des brûleurs et grilles",
-            "Friteuses : vidange, nettoyage de la cuve et rinçage",
-            "Fours et salamandres : décarbonisation intérieure et extérieure",
-            "Plancha, grills et rôtissoires",
-            "Hottes et systèmes d'extraction",
-            "Lavage et remise en éclat des sols, quel que soit le revêtement",
-            "Traitement des banquettes et assises textiles par injection-extraction",
-            "Désinfection complète, détartrage de la robinetterie et des cuvettes, traitement des odeurs etc..",
-        ],
-        image: "/images/Nettoyage-de-restaurant-sur-Cergy.jpg",
-    },
-    {
-        titre: "Nettoyage de bureaux & Tertiaire",
-        texte: "Entretien quotidien ou hebdomadaire sur-mesure pour préserver l'image de votre entreprise et le confort de vos collaborateurs.",
-        details: [
-            "Dépoussiérage et désinfection des postes de travail",
-            "Nettoyage des sols (aspiration, lavage)",
-            "Gestion et tri des corbeilles à papier",
-            "Désinfection rigoureuse des sanitaires et points de contact",
-            "Entretien des espaces pause / cuisinettes",
-        ],
-        image: "/images/Nettoyage-de-bureaux-sur-Cergy.jpg",
-    },
-    {
-        titre: "Copropriétés & Immeubles",
-        texte: "Des prestations régulières pour maintenir le standing de votre résidence et le bien-être des occupants.",
-        details: [
-            "Nettoyage des halls d'entrée, escaliers et ascenseurs",
-            "Gestion des conteneurs à ordures ménagères (entrée/sortie)",
-            "Nettoyage des locaux poubelles et désinfection",
-            "Entretien des vitreries de parties communes",
-            "Balayage des parkings et abords d'immeuble",
-        ],
-        image: "/images/nettoyage-copropriete-immeuble-cergy-95.jpg",
-    },
-    {
-        titre: "Fin de chantier & Remise en état",
-        texte: "Un nettoyage en profondeur pour livrer ou réintégrer des locaux impeccables après des travaux ou une rénovation.",
-        details: [
-            "Élimination des voiles de ciment, plâtre et peinture",
-            "Dépoussiérage intégral murs, plafonds et conduits",
-            "Lavage haute pression ou décapage des sols",
-            "Nettoyage approfondi des menuiseries et vitres",
-            "Évacuation des petits déchets de chantier restant",
-        ],
-        image: "/images/nettoyage-fin-de-chantier-bureau-cergy-95.jpg",
-    },
-    {
-        titre: "Vitrerie & Façades vitrées",
-        texte: "Lavage professionnel de toutes vos surfaces vitrées pour une clarté optimale et sans traces.",
-        details: [
-            "Nettoyage des vitres intérieures / extérieures",
-            "Lavage des baies vitrées et vitrines de commerces",
-            "Entretien des encadrements, châssis et rebords",
-            "Dégraissage et suppression des empreintes",
-            "Intervention en hauteur sécurisée",
-        ],
-        image: "/images/nettoyage-vitres-bureau-cergy-95.jpg",
-    },
-];
+import { buildBreadcrumbSchema } from "@/lib/schema";
+import { PRESTATIONS, PRESTATION_SLUGS, VILLES, VilleSlug, buildCombinedSlug } from "@/lib/local-seo";
 
 const ENGAGEMENTS = [
     {
@@ -102,8 +25,6 @@ const ENGAGEMENTS = [
     },
 ];
 
-type VilleSlug = keyof typeof VILLES;
-
 interface PageProps {
     params: { ville: string };
 }
@@ -118,19 +39,30 @@ export function generateMetadata({ params }: PageProps): Metadata {
     if (!ville) return {};
 
     return {
-        title: `Entreprise de nettoyage à ${ville.nom} (95) | Cergy Propreté 95`,
+    title: `Entreprise de nettoyage à ${ville.nom} (95)`,
         description: `Cergy Propreté 95 intervient à ${ville.nom} (${ville.description}) pour le nettoyage de bureaux, copropriétés, commerces et fin de chantier. Devis sous 24h.`,
         alternates: { canonical: `/nettoyage/${params.ville}` },
     };
 }
 
 export default function VillePage({ params }: PageProps) {
-    const ville = VILLES[params.ville as VilleSlug];
+    const villeSlug = params.ville as VilleSlug;
+    const ville = VILLES[villeSlug];
 
     if (!ville) notFound();
 
+    const breadcrumbSchema = buildBreadcrumbSchema([
+        { name: "Accueil", url: "https://nettoyage-cergy.fr" },
+        { name: `Nettoyage à ${ville.nom}`, url: `https://nettoyage-cergy.fr/nettoyage/${villeSlug}` },
+    ]);
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+
             {/* Fil d'Ariane */}
             <nav aria-label="Fil d'Ariane" className="mx-auto max-w-7xl px-6 pt-6 text-sm text-slate-600">
                 <ol className="flex items-center gap-2">
@@ -149,16 +81,16 @@ export default function VillePage({ params }: PageProps) {
                         {ville.nom} — Val-d&apos;Oise (95)
                     </span>
                     <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                        Entreprise de nettoyage professionnel à {ville.nom}
+                        Entreprise de nettoyage professionnel à <strong>{ville.nom}</strong>
                     </h1>
                     <p className="mt-5 text-lg leading-relaxed text-slate-600">
-                        Cergy Propreté 95 accompagne les professionnels, copropriétés, commerces et particuliers de <strong>{ville.nom}</strong>. Profitez de solutions de propreté sur-mesure, réactives et adaptées aux exigences de vos locaux.
+                        <strong>Cergy Propreté</strong> accompagne les professionnels, copropriétés, commerces et particuliers de <strong>{ville.nom}</strong>. Profitez de solutions de propreté sur-mesure, réactives et adaptées aux exigences de vos locaux dans le <strong>Val-d&apos;Oise (95)</strong>.
                     </p>
                     <div className="mt-8 flex flex-wrap gap-4">
                         <Link href="/#devis" className="btn-primary inline-flex items-center justify-center px-6 py-3 font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
                             Obtenir un devis sous 24h
                         </Link>
-                        <a href="tel:+33100000000" className="inline-flex items-center justify-center px-6 py-3 font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">
+                        <a href="tel:+33752081144" className="inline-flex items-center justify-center px-6 py-3 font-medium text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors">
                             Appeler un conseiller
                         </a>
                     </div>
@@ -167,7 +99,7 @@ export default function VillePage({ params }: PageProps) {
                 <div className="relative overflow-hidden rounded-2xl shadow-xl aspect-4/3 lg:aspect-square">
                     <Image
                         src="/images/AgentdeNettoyage_Cergy.jpg"
-                        alt={`Prestation de nettoyage professionnel par Cergy Propreté 95 à ${ville.nom}`}
+                        alt={`Agent de nettoyage professionnel Cergy Propreté en intervention à ${ville.nom}, Val-d'Oise`}
                         fill
                         priority
                         sizes="(min-width: 1024px) 50vw, 100vw"
@@ -188,7 +120,7 @@ export default function VillePage({ params }: PageProps) {
                 </div>
             </section>
 
-            {/* Grid Prestations détaillées */}
+            {/* Grid Prestations détaillées — chaque carte pointe vers sa landing page dédiée */}
             <section className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
                 <div className="max-w-3xl">
                     <span className="text-xs font-semibold uppercase tracking-wider text-blue-600">
@@ -198,42 +130,56 @@ export default function VillePage({ params }: PageProps) {
                         Des services de propreté complets et modulables
                     </h2>
                     <p className="mt-3 text-slate-600">
-                        Découvrez le détail des opérations réalisées par nos agents lors de chaque intervention.
+                        Découvrez le détail des opérations réalisées par nos agents lors de chaque intervention à {ville.nom}.
                     </p>
                 </div>
 
                 <div className="mt-12 grid gap-8 md:grid-cols-2">
-                    {PRESTATIONS.map((prestation) => (
-                        <article key={prestation.titre} className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md">
-                            <div className="relative h-56 w-full">
-                                <Image
-                                    src={prestation.image}
-                                    alt={`${prestation.titre} à ${ville.nom}`}
-                                    fill
-                                    sizes="(min-width: 768px) 50vw, 100vw"
-                                    className="object-cover"
-                                />
-                            </div>
-                            <div className="flex flex-1 flex-col p-6 sm:p-8">
-                                <h3 className="text-2xl font-bold text-slate-900">{prestation.titre}</h3>
-                                <p className="mt-3 text-sm leading-relaxed text-slate-600">{prestation.texte}</p>
-
-                                <div className="mt-6 border-t border-slate-100 pt-5">
-                                    <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                                        Ce que comprend la prestation :
-                                    </h4>
-                                    <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                                        {prestation.details.map((detail, idx) => (
-                                            <li key={idx} className="flex items-start gap-2">
-                                                <span className="text-blue-600 font-bold">•</span>
-                                                <span>{detail}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                    {PRESTATION_SLUGS.map((prestationSlug) => {
+                        const prestation = PRESTATIONS[prestationSlug];
+                        const href = `/nettoyage-${buildCombinedSlug(prestationSlug, villeSlug)}`;
+                        return (
+                            <Link
+                                href={href}
+                                key={prestationSlug}
+                                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                            >
+                                <div className="relative h-56 w-full">
+                                    <Image
+                                        src={prestation.image}
+                                        alt={`${prestation.nom} à ${ville.nom}`}
+                                        fill
+                                        sizes="(min-width: 768px) 50vw, 100vw"
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
                                 </div>
-                            </div>
-                        </article>
-                    ))}
+                                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                                        {prestation.nom} à {ville.nom}
+                                    </h3>
+                                    <p className="mt-3 text-sm leading-relaxed text-slate-600">{prestation.texte}</p>
+
+                                    <div className="mt-6 border-t border-slate-100 pt-5">
+                                        <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                                            Ce que comprend la prestation :
+                                        </h4>
+                                        <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                                            {prestation.details.slice(0, 4).map((detail, idx) => (
+                                                <li key={idx} className="flex items-start gap-2">
+                                                    <span className="text-blue-600 font-bold">•</span>
+                                                    <span>{detail}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
+                                        En savoir plus <span aria-hidden="true">→</span>
+                                    </span>
+                                </div>
+                            </Link>
+                        );
+                    })}
                 </div>
             </section>
 
@@ -241,9 +187,9 @@ export default function VillePage({ params }: PageProps) {
             <section className="bg-slate-900 text-white px-6 py-16 sm:py-20">
                 <div className="mx-auto max-w-7xl">
                     <div className="max-w-2xl">
-                        <h2 className="text-3xl font-bold sm:text-4xl">Pourquoi faire confiance à Cergy Propreté 95 ?</h2>
+                        <h2 className="text-3xl font-bold sm:text-4xl">Pourquoi faire confiance à Cergy Propreté ?</h2>
                         <p className="mt-3 text-slate-400">
-                            Nous nous engageons quotidiennement pour vous garantir un niveau de qualité constant.
+                            Nous nous engageons quotidiennement pour vous garantir un niveau de qualité constant à {ville.nom}.
                         </p>
                     </div>
 

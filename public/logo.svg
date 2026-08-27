@@ -1,39 +1,20 @@
-<svg viewBox="0 0 520 150" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 120 130" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e3a8a" /> <!-- Deep Navy -->
-      <stop offset="100%" stop-color="#172554" /> <!-- Darker Navy -->
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#172554" />
     </linearGradient>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#f59e0b" /> <!-- Gold -->
-      <stop offset="100%" stop-color="#b45309" /> <!-- Darker Gold -->
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
     </linearGradient>
   </defs>
 
-  <!-- ICON: Water Drop & Eco Leaf & Sparkle -->
+  <!-- ICON seul : goutte d'eau + feuille éco + étincelle (sans texte intégré) -->
   <g transform="translate(10, 10)">
-    <!-- Main Drop (Now Navy) -->
     <path d="M 60 10 C 60 10 95 52 95 78 C 95 98.43 78.43 115 58 115 C 37.57 115 21 98.43 21 78 C 21 52 60 10 60 10 Z" fill="url(#navyGrad)"/>
-    <!-- Eco Leaf (Now Gold) -->
     <path d="M 60 48 C 60 48 83 71 83 88 C 83 99.05 74.05 108 63 108 C 55.5 108 49 103 46 96 C 60 88 67 73 60 48 Z" fill="url(#goldGrad)"/>
-    <!-- Sparkle -->
     <path d="M 60 26 L 63 35 L 72 38 L 63 41 L 60 50 L 57 41 L 48 38 L 57 35 Z" fill="#ffffff"/>
     <path d="M 35 56 L 36.3 60.5 L 40.8 61.8 L 36.3 63 L 35 67.5 L 33.7 63 L 29.2 61.8 L 33.7 60.5 Z" fill="#fef3c7"/>
-  </g>
-
-  <!-- TEXT -->
-  <g transform="translate(130, 0)">
-    <!-- CERGY PROPRETE -->
-    <text x="0" y="68" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="40" fill="#1e3a8a" letter-spacing="1.5">
-      CERGY <tspan fill="url(#goldGrad)">PROPRET&#xC9;</tspan>
-    </text>
-    
-    <!-- Subtitle -->
-    <text x="3" y="98" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" font-size="13" fill="#475569" letter-spacing="4">
-      CERGY &amp; VAL-D&apos;OISE
-    </text>
-
-    <!-- Underline bar (Now Gold) -->
-    <rect x="3" y="112" width="220" height="4" rx="2" fill="url(#goldGrad)" />
   </g>
 </svg>

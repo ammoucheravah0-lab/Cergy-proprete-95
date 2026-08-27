@@ -7,9 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import DevisSection from "@/components/DevisSection";
 
 export const metadata: Metadata = {
-  title: "Entreprise de nettoyage à Cergy & Val-d'Oise | Cergy Propreté 95",
+  title: "Cergy Propreté - Entreprise de Nettoyage à Cergy et dans le Val-d'Oise (95)",
   description:
-    "Cergy Propreté 95, entreprise de nettoyage basée à Cergy : bureaux, copropriétés, fin de chantier, particuliers. Intervention rapide dans tout le Val-d'Oise (95). Devis gratuit.",
+    "Cergy Propreté, entreprise de nettoyage basée à Cergy : bureaux, restaurants, copropriétés, fin de chantier, particuliers. Intervention rapide dans tout le Val-d'Oise (95). Devis gratuit sous 24h.",
   alternates: { canonical: "/" },
 };
 
