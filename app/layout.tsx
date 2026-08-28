@@ -61,10 +61,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
-  },
-  verification: {
-    google: "TODO-google-site-verification-code",
-  },
+  }
 };
 
 export default function RootLayout({
